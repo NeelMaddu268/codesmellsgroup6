@@ -32,4 +32,20 @@ class Item {
     public double getDiscountAmount() {
         return discountAmount;
     }
+
+    public double getDiscount() {
+        double newPrice = price;
+        switch (discountType) {
+            case PERCENTAGE:
+                newPrice -= discountAmount * newPrice;
+                break;
+            case AMOUNT:
+                newPrice -= discountAmount;
+                break;
+            default:
+                // no discount
+                break;
+        }
+        return newPrice;
+    }
 }

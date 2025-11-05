@@ -14,28 +14,12 @@ public class Order {
     public double calculateTotalPrice() {
         double total = 0.0;
         for (Item item : items) {
-            total += itemDiscount(item) * item.getQuantity();
+            total += item.getDiscount() * item.getQuantity();
             total += itemTax(item);
         }
         total = checkGiftCard(total);
         total = orderDiscount(total);
         return total;
-    }
-
-    private double itemDiscount(Item item) {
-        double price = item.getPrice();
-        switch (item.getDiscountType()) {
-            case PERCENTAGE:
-                price -= item.getDiscountAmount() * price;
-                break;
-            case AMOUNT:
-                price -= item.getDiscountAmount();
-                break;
-            default:
-                // no discount
-                break;
-        }
-        return price;
     }
 
     private double checkGiftCard(double total) {
