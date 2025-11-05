@@ -1,0 +1,14 @@
+﻿# IntelliJ / JetBrains
+.idea/
+*.iml
+
+# Java build output
+/out/
+/build/
+*.class
+
+# OS + temp files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
