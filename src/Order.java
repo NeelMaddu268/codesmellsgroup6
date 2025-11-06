@@ -14,7 +14,7 @@ public class Order {
     public double calculateTotalPrice() {
         double total = 0.0;
         for (Item item : items) {
-            total += item.getDiscount() * item.getQuantity();
+            total += item.getDiscountPrice() * item.getQuantity();
             total += itemTax(item);
         }
         total = checkGiftCard(total);
@@ -25,19 +25,15 @@ public class Order {
     private double checkGiftCard(double total) {
         if (hasGiftCard()) {
             total -= 10.0; // subtract $10 for gift
-            return total;
-        } else {
-            return total;
         }
+        return total;
     }
 
     private double orderDiscount(double total) {
         if (total > 100.0) {
             total *= 0.9; // apply 10% discount for orders over $100
-            return total;
-        } else {
-            return total;
         }
+        return total;
     }
 
     private double itemTax(Item item) {

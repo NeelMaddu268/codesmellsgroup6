@@ -1,15 +1,15 @@
-class Item {
+public abstract class Item {
     private String name;
     private double price;
     private int quantity;
-    private DiscountType discountType;
+    //private DiscountType discountType;
     private double discountAmount;
 
-    public Item(String name, double price, int quantity, DiscountType discountType, double discountAmount) {
+    public Item(String name, double price, int quantity, double discountAmount) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.discountType = discountType;
+        //this.discountType = discountType;
         this.discountAmount = discountAmount;
     }
 
@@ -25,15 +25,16 @@ class Item {
         return quantity;
     }
 
-    public DiscountType getDiscountType() {
+    /*public DiscountType getDiscountType() {
         return discountType;
-    }
+    }*/
 
     public double getDiscountAmount() {
         return discountAmount;
     }
 
-    public double getDiscount() {
+    public abstract double getDiscountPrice();
+/*    public double getDiscount() {
         double newPrice = price;
         switch (discountType) {
             case PERCENTAGE:
@@ -47,5 +48,5 @@ class Item {
                 break;
         }
         return newPrice;
-    }
+    }*/
 }
