@@ -66,4 +66,15 @@ class Item {
     public boolean isGiftCard() {
         return giftCard;
     }
+
+    public double getTotalPrice() {
+        double subtotal = getDiscount() * quantity;
+        double tax;
+        if (taxable) {
+            tax = (taxRate / 100 ) * price;
+        } else {
+            tax = 0.0;
+        }
+        return subtotal + tax;
+    }
 }

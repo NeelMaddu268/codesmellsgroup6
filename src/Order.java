@@ -14,8 +14,7 @@ public class Order {
     public double calculateTotalPrice() {
         double total = 0.0;
         for (Item item : items) {
-            total += item.getDiscount() * item.getQuantity();
-            total += itemTax(item);
+            total += item.getTotalPrice();
         }
         total = checkGiftCard(total);
         total = orderDiscount(total);
@@ -118,4 +117,3 @@ public class Order {
     }
 
 }
-
