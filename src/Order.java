@@ -41,12 +41,12 @@ public class Order {
     }
 
     private double itemTax(Item item) {
-        if (item instanceof TaxableItem) {
-            TaxableItem taxableItem = (TaxableItem) item;
-            return taxableItem.getTaxRate() / 100.0 * item.getPrice();
+        if (item.isTaxable()) {
+            return item.getTaxRate() / 100.0 * item.getPrice();
         }
         return 0.0;
     }
+
 
     public void sendConfirmationEmail() {
         String message = "Thank you for your order, " + customerName + "!\n\n" +
@@ -96,7 +96,7 @@ public class Order {
     public boolean hasGiftCard() {
         boolean has_gift_card = false;
         for (Item item : items) {
-            if (item instanceof GiftCardItem) {
+            if (item.isGiftCard()) {
                 has_gift_card = true;
                 break;
             }
