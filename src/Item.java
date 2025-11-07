@@ -1,8 +1,8 @@
-class Item {
+abstract class Item {
     private String name;
     private double price;
     private int quantity;
-    private DiscountType discountType;
+    //private DiscountType discountType;
     private double discountAmount;
 
     private boolean taxable;
@@ -10,11 +10,11 @@ class Item {
 
     private boolean giftCard = false;
 
-    public Item(String name, double price, int quantity, DiscountType discountType, double discountAmount, boolean taxable, boolean giftCard) {
+    public Item(String name, double price, int quantity, double discountAmount, boolean taxable, boolean giftCard) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.discountType = discountType;
+//        this.discountType = discountType;
         this.discountAmount = discountAmount;
         this.taxable = taxable;
         this.giftCard = giftCard;
@@ -32,9 +32,9 @@ class Item {
         return quantity;
     }
 
-    public DiscountType getDiscountType() {
-        return discountType;
-    }
+//    public DiscountType getDiscountType() {
+//        return discountType;
+//    }
 
     public double getDiscountAmount() {
         return discountAmount;
@@ -47,34 +47,20 @@ class Item {
         return taxRate;
     }
 
-    public double getDiscount() {
-        double newPrice = price;
-        switch (discountType) {
-            case PERCENTAGE:
-                newPrice -= discountAmount * newPrice;
-                break;
-            case AMOUNT:
-                newPrice -= discountAmount;
-                break;
-            default:
-                // no discount
-                break;
-        }
-        return newPrice;
-    }
+    public abstract double getDiscountPrice();
 
     public boolean isGiftCard() {
         return giftCard;
     }
 
     public double getTotalPrice() {
-        double subtotal = getDiscount() * quantity;
+        double discounted = getDiscountPrice() * quantity;
         double tax;
         if (taxable) {
             tax = (taxRate / 100 ) * price;
         } else {
             tax = 0.0;
         }
-        return subtotal + tax;
+        return discounted + tax;
     }
 }
