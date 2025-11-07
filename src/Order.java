@@ -48,8 +48,8 @@ public class Order {
 
 
     public void sendConfirmationEmail() {
-        String message = "Thank you for your order, " + customerName + "!\n\n" +
-                "Your order details:\n";
+        String message = "Thank you for your order, " + customerName + "!\n\n"
+                + "Your order details:\n";
         for (Item item : items) {
             message += item.getName() + " - " + item.getPrice() + "\n";
         }

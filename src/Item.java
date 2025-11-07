@@ -10,11 +10,11 @@ abstract class Item {
 
     private boolean giftCard = false;
 
-    public Item(String name, double price, int quantity, double discountAmount, boolean taxable, boolean giftCard) {
+    public Item(String name, double price, int quantity,
+                double discountAmount, boolean taxable, boolean giftCard) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-//        this.discountType = discountType;
         this.discountAmount = discountAmount;
         this.taxable = taxable;
         this.giftCard = giftCard;
@@ -31,10 +31,6 @@ abstract class Item {
     public int getQuantity() {
         return quantity;
     }
-
-//    public DiscountType getDiscountType() {
-//        return discountType;
-//    }
 
     public double getDiscountAmount() {
         return discountAmount;
@@ -57,7 +53,7 @@ abstract class Item {
         double discounted = getDiscountPrice() * quantity;
         double tax;
         if (taxable) {
-            tax = (taxRate / 100 ) * price;
+            tax = (taxRate / 100) * price;
         } else {
             tax = 0.0;
         }

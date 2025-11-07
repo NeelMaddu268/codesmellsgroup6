@@ -1,5 +1,6 @@
 public class PercentagedDiscountItem extends Item {
-    public PercentagedDiscountItem(String name, double price, int quantity, double discountAmount, boolean taxable, boolean giftCard) {
+    public PercentagedDiscountItem(String name, double price, int quantity,
+                                   double discountAmount, boolean taxable, boolean giftCard) {
         super(name, price, quantity, discountAmount, taxable, giftCard);
     }
 
